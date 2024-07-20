@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Workit landing page</title>
+
+  <link rel="preload" href="assets/fonts/subset-Fraunces144pt-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/subset-Manrope-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    body{margin:0;min-height:100svh;-webkit-font-smoothing:antialiased;-moz-text-size-adjust:none;-webkit-text-size-adjust:none;text-size-adjust:none}
+    h1,h2,h3,h4{text-wrap:balance}
+    a,p,h1,h2,h3,h4,h5,h6{overflow-wrap:break-word}
+    body,h1,h2,h3,h4,p,figure,blockquote,dl,dd,ol,ul{margin-block-start:0;margin-block-end:0}
+    img,picture,video,canvas,svg{display:block;max-width:100%}
+    input,button,textarea,select{font:inherit;touch-action:manipulation}
+    a:not([class]){text-decoration-skip-ink:auto;color:currentColor;user-select:none}
+    :target{scroll-margin-block:5ex}
+
+    @font-face {
+      font-family: "Fraunces 144pt";
+      src: url("assets/fonts/subset-Fraunces144pt-SemiBold.woff2") format("woff2");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Manrope";
+      src: url("assets/fonts/subset-Manrope-Regular.woff2") format("woff2");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: "Iconly";
+      font-style: normal;
+      font-weight: 400;
+      src: url(data:appication/octet-stream;base64,d09GMgABAAAAAAUUAAsAAAAACogAAATGAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHIE0BmAAhSwKhHyEWwsqAAE2AiQDUAQgBYN+B4EXG3kJURSSQ/bjMBVZl4uBI0mSwoQpk7z8yoTrYILxRRD1Nj979r0l+ICcnYEwE/AnXUlrYJ2JQ+Ago4iIIju1IxLP/3u77/ytKCiwyBOMo5GEluG8QbtMCiFX0xOd9G8tqd1jV1m1ZjYtJuRSJ0zQoXFRNkLuXggtKQCwoEyEJQuPJF8CGYnG5ONe2df+rf8FPQsqlfcB+JEI8Kw7knGdePr5RCOX7jNIAwAB3yujVsnh0GmaRuEEivbrKY5ZxzJETBabQ7OFXJFYIJJQwoxAR6HjfZ0sli4igC9zeTSXyxeQzi56IPfSYbzG++Ae++vltxkHDGahbPDs54QiL5OZiWq1W+76XgsEyuNFwAQKLAMN+QiApxQByxQPerzmZuiWULSMgoqaHXWpy2bSboOMnBKl2tNANAaLiW5S6DesGjfdDo5I54LRdIjpWMKmhED4TxYGBVnAxUH4Diq0U96V0hBsLr+CogwIf1HtAhkWDuUQUR6dVIBJJfhURgdVEFMNmnbQRXtIaB821WFRAwE1EVIKly7Te/g5MkLwc2yEgZ+TjaIAdAOYBzb4DOQEcCkgTAK725TNhYUwDBauOj1+42Ds/aDxZ+92r8v1Jyaen0MmH78wf9PioS++cF40mfvigsfPQ7xUKAl94dUX3lxFjK2enoK7wMMtGavHx6BFrkVswisVumF3FYVav7yErnCvhGIjnlboBA+1ZFGev7DEvURMUY4XemBPFUI5XljmWg7CBbyVuJdA3qpINAxL3irXS8LeSuCWkXi0tbJtiJvsVG2XCODngdXa4uZVnvhyKPCBPMl4qAd4t6u1gn++Z4R5opCdfkt2TJfd96X+efr3E3k/OktB69hgw4zm72tYf234xk/DjPXYq+Rt/oWLva0l//w5atfPARyz1bccwHnSysB6MLjrUtMsA79ozzDlXOVslvr3jKvpvB56vMJSLLGUByjjDT0yqMvF5FSWx5He66CdQaReV6M3yUUm+qG5O1hbWliJFKXeNkeHHBZgkck55HeMK/VbuH1Htj7KLvHnpMtdXAppjVkRmh1wmdPx0dY+MwpjWCQK2+n1N3n5f+Lfj5LBLeW+OLxZSUuA/nv6QP8fjJvb6wviUxwjlf33fsHnarN8PFNoE267icGawQs0kAXa2Pbdr6HxLbRbGtQhTAIEz9TsE5n48L8dX6Pw4rwYZH84DACCJWuMliFpjxIr0A2U6UqwKZC/pdvlTAAG8HigDQCQeBMBICwgAAw2iwBQLCEBoFm6CACTb4AAsFimCQDPkkUCwNflAoo0FxGo+gZDJDUogeuh6W6DqdcDBkvgCYPnQs+3+mbTWStssF1PFXSSTtN1KiG5sboeGTo31Nq8tLKZpuXTAeJN0OJ2uft10a6DsFAZErdjvoGagrp9u65wrpKKS+zKadDDfuxCpQyhqTZ93IZV65k4KbBfwConVVL0OHlXGNd0qYpNqVTZuLKGuj3jTlS3X7Cwa1ed2joHNdRtKylIrapKpQ46YM2asphYVWhkgQaAtdRDdscQJVpMscQWR1zxxJdAQokklkQ6pFO6pFt6CBZtaGVrORAF3G+icf0vRCCk3QcODyA1KUhd9iUjqVwmJWlIU3JSkT0pS152AA==) format("woff2");
+    }
+
+    [class|="icon"] {
+      display: inline-block;
+      font-family: "Iconly" !important;
+      font-weight: 400;
+      font-style: normal;
+      font-variant: normal;
+      text-rendering: auto;
+      line-height: 1;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      text-decoration: none;
+    }
+
+    .icon-twitter:before {content:"\e00e" / "Twitter"}
+    .icon-instagram:before {content:"\e00f"}
+    .icon-facebook:before {content:"\e010"}
+
+    img  {
+      width: auto;
+      height: auto;
+      display: block;
+      outline: 1px solid #333a;
+    }
+  </style>
+
+  <link rel="stylesheet" href="style.css">
+
+  <meta name="description" content="Placeholder text | Placeholder text | Placeholder text">
+  <meta name="theme-color" content="#24053E" >
+</head>
+<body>
+  <header id="pageheader">
+    <div class="left">
+      <a href="#" class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="97" height="26" title="Workit Logo"><path fill="#FFF" d="m10.5 25 4-11.2L18.7 25h4.2l6-17.5h-5l-3.4 10.2-3.7-10.2h-4.2L8.7 17.7 5.3 7.5h-5l6 17.5h4.2Zm28.4.4c1.7 0 3.2-.4 4.7-1.2a9.1 9.1 0 0 0 3.3-3.2c.9-1.4 1.3-3 1.3-4.7 0-1.8-.4-3.4-1.3-4.7a9.2 9.2 0 0 0-3.3-3.3c-1.5-.8-3-1.2-4.7-1.2-1.8 0-3.3.4-4.8 1.2a9.1 9.1 0 0 0-3.4 3.3c-.8 1.3-1.2 2.9-1.2 4.7 0 1.7.4 3.3 1.2 4.7a9.1 9.1 0 0 0 3.4 3.2c1.5.8 3 1.2 4.8 1.2Zm0-4.3c-1.3 0-2.4-.5-3.2-1.4a5 5 0 0 1-1.3-3.4 5 5 0 0 1 1.3-3.5 4 4 0 0 1 3.2-1.3 4 4 0 0 1 3.1 1.3 5 5 0 0 1 1.2 3.5 5 5 0 0 1-1.2 3.4 4 4 0 0 1-3.1 1.4ZM55.4 25v-9.4a4 4 0 0 1 1-3c.8-.7 1.7-1.1 2.9-1.1h1.5V7.3h-1c-1 0-2 .2-2.8.6a4 4 0 0 0-2 2.3V7.5h-4.4V25h4.8Zm11.9 0v-5.3l1.9-2.2 4.4 7.5h5.5l-6.3-10.4 6.3-7h-5.9l-6 6.2V.8h-4.7V25h4.8ZM83.6 4.7V1.2h-2v3.5h2Zm0 20.3V8h-2v17h2Zm11 .2a10 10 0 0 0 1.5-.2v-1.7a11.3 11.3 0 0 1-1.2 0c-.8 0-1.4 0-1.8-.3a2 2 0 0 1-.8-1.1 4.6 4.6 0 0 1-.2-1.4V9.8h3.7V8h-3.7V4h-2V6c0 .6 0 1.1-.4 1.5-.4.4-.9.6-1.5.6H87v1.8h3.2v10.7c0 1.5.4 2.7 1.1 3.5.8.8 1.9 1.2 3.3 1.2Z"/></svg>
+      </a>
+    </div>
+    <div class="right">
+      <a href="#">Apply for access</a>
+    </div>    
+  </header>
+  <main>
+    <article class="hero">
+      <h1 class="headingLargeFont">Data <u>tailored</u> to<br> your needs.</h1>
+      <a href="#" class="btn">Learn more</a>
+      <picture class="portrait">
+        <source media="(min-width: 768px)" srcset="./assets/images/desktop_image-hero.avif" type="image/avif">
+        <source media="(min-width: 768px)" srcset="./assets/images/desktop_image-hero.webp" type="image/webp">
+        <source media="(min-width: 480px)" srcset="./assets/images/tablet_image-hero.avif" type="image/avif">
+        <source media="(min-width: 480px)" srcset="./assets/images/tablet_image-hero.webp" type="image/webp">
+        <source srcset="./assets/images/mobile_image-hero.avif" type="image/avif">
+        <img id="image-01" src="./assets/images/mobile_image-hero.webp" width="480" height="276" alt="Simplified mockup of XXX">
+      </picture>
+      <svg class="bottomarch" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1440 68"><path d="M0 0h1440s-357 68-718 68S0 0 0 0Z" fill="var(--archcolor)"/></svg>
+    </article>
+    <article class="featurelist" aria-label="Service features">
+      <ol>
+        <li>
+          <header class="title headingSmallFont">Actionable insights</header>
+          <p class="text">Optimize your products, improve customer satisfaction and stay ahead of the competition with our product data analytics.</p>
+        </li>
+        <li>
+          <header class="title headingSmallFont">Data-driven decisions</header>
+          <p class="text">Make data-driven decisions with our product data analytics. Our AI-generated reports help you unlock insights hidden in your product data.</p>
+        </li>
+        <li>
+          <header class="title headingSmallFont">Always affordable</header>
+          <p class="text">Always affordable pricing that scales with your business. Get top-quality product data analytics services without hidden costs or unexpected fees.</p>
+        </li>
+      </ol>
+      <svg class="bottomarch" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1440 68"><path d="M0 0h1440s-357 68-718 68S0 0 0 0Z" fill="var(--archcolor)"/></svg>
+    </article>
+    <article class="calltoaction">
+      <picture class="portrait">
+        <source media="(min-width: 768px)" srcset="./assets/images/desktop_image-founder.avif" type="image/avif">
+        <source media="(min-width: 768px)" srcset="./assets/images/desktop_image-founder.webp" type="image/webp">
+        <source srcset="./assets/images/mobile_image-founder.avif" type="image/avif">
+        <img loading="lazy" id="image-02" src="./assets/images/mobile_image-founder.webp" width="480" height="480" alt="Portrait of the Founder Louis Graham">
+      </picture>
+      <div class="content-wrapper">
+        <h2 class="title headingMediumFont">Be the first to test</h2>
+        <p class="text">Hi, I'm Louis Graham, the founder of the company. Book a demo call with me to become a beta tester for our app and kickstart your company. Apply for access below and I’ll be in touch to schedule a call.</p>
+        <a href="#" class="btn">Apply for access</a>
+      </div>
+    </article>
+  </main>
+  <footer>
+    <svg xmlns="http://www.w3.org/2000/svg" width="97" height="26" class="logo" title="Workit Logo"><path fill="#24053E" d="m10.5 25 4-11.2L18.7 25h4.2l6-17.5h-5l-3.4 10.2-3.7-10.2h-4.2L8.7 17.7 5.3 7.5h-5l6 17.5h4.2Zm28.4.4c1.7 0 3.2-.4 4.7-1.2a9.1 9.1 0 0 0 3.3-3.2c.9-1.4 1.3-3 1.3-4.7 0-1.8-.4-3.4-1.3-4.7a9.2 9.2 0 0 0-3.3-3.3c-1.5-.8-3-1.2-4.7-1.2-1.8 0-3.3.4-4.8 1.2a9.1 9.1 0 0 0-3.4 3.3c-.8 1.3-1.2 2.9-1.2 4.7 0 1.7.4 3.3 1.2 4.7a9.1 9.1 0 0 0 3.4 3.2c1.5.8 3 1.2 4.8 1.2Zm0-4.3c-1.3 0-2.4-.5-3.2-1.4a5 5 0 0 1-1.3-3.4 5 5 0 0 1 1.3-3.5 4 4 0 0 1 3.2-1.3 4 4 0 0 1 3.1 1.3 5 5 0 0 1 1.2 3.5 5 5 0 0 1-1.2 3.4 4 4 0 0 1-3.1 1.4ZM55.4 25v-9.4a4 4 0 0 1 1-3c.8-.7 1.7-1.1 2.9-1.1h1.5V7.3h-1c-1 0-2 .2-2.8.6a4 4 0 0 0-2 2.3V7.5h-4.4V25h4.8Zm11.9 0v-5.3l1.9-2.2 4.4 7.5h5.5l-6.3-10.4 6.3-7h-5.9l-6 6.2V.8h-4.7V25h4.8ZM83.6 4.7V1.2h-2v3.5h2Zm0 20.3V8h-2v17h2Zm11 .2a10 10 0 0 0 1.5-.2v-1.7a11.3 11.3 0 0 1-1.2 0c-.8 0-1.4 0-1.8-.3a2 2 0 0 1-.8-1.1 4.6 4.6 0 0 1-.2-1.4V9.8h3.7V8h-3.7V4h-2V6c0 .6 0 1.1-.4 1.5-.4.4-.9.6-1.5.6H87v1.8h3.2v10.7c0 1.5.4 2.7 1.1 3.5.8.8 1.9 1.2 3.3 1.2Z"/></svg>
+    <ul class="socialicons" aria-label="Social links">
+      <li><a href="#" aria-label="Facebook" title="Facebook" class="icon-facebook"></a></li>
+      <li><a href="#" aria-label="Twitter" title="Twitter" class="icon-twitter"></a></li>
+      <li><a href="#" aria-label="Instagram" title="Instagram" class="icon-instagram"></a></li>
+    </ul>
+  </footer>
+</body>
+</html>
